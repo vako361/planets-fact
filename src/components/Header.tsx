@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
-import type { planetType } from "../db";
-import { useState } from "react";
-export default function Header() {
+import type { MyComponentProps, planetType } from "../db";
+import { useState} from "react";
+
+ 
+export default function Header({menu, setMenu} : MyComponentProps) {
+
   const nav: planetType[] = [
     { name: "Mercury", color: "#DEF4FC" },
     { name: "Venus", color: "#F7CC7F" },
@@ -12,19 +15,24 @@ export default function Header() {
     { name: "Uranus", color: "#65F0D5" },
     { name: "Neptune", color: "#497EFA" }
   ];
-  const [menu, setMenu] = useState<boolean>(false)
-console.log(menu)
+
+
+
+
+  
+
   return (
-    <header className="flex flex-col justify-center min-w-screen pt-[16px] ">
+    <header className="flex flex-col justify-center min-w-screen pt-[16px] relative">
 
       <div className="flex justify-center gap-[196px]">
        <h1 className="text-white text-[28px]">THE PLANETS</h1>
-       <img onClick={() => setMenu(!menu)} src="/assets/icon-hamburger.svg" className="h-[17px] w-[24px] mt-3 opacity-25" alt="menu icon" />
+       <img onClick={() => setMenu(!menu)} src="/assets/icon-hamburger.svg" className="h-[17px] w-[24px] mt-3 opacity-25 md:hidden" alt="menu icon" />
       </div>
-
+      <section className="hidden md:flex items-center justify-center gap-[33px]
+       mt-[39px] font-[700] mb-[27px] opacity-80 font-[Spartan] leading-[25px] tracking-[1px] text-[11px] uppercase">{nav.map((item) => <Link to={item.name} className="text-white">{item.name}</Link> )}</section>
       <div className="w-full h-[1px] bg-white opacity-20 mt-[25px]"></div>
    
-{ menu && <div className="pl-[24px] mt-[44px]">
+{ menu && <div className="pl-[24px] mt-[44px] absolute top-[60px] bg-[#070724]">
   {nav.map((item) => (
     <div key={item.name}> 
     <nav onClick={() => setMenu(!menu)}  className="flex items-center justify-between w-[327px] mb-4">

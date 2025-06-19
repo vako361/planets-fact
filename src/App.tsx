@@ -2,24 +2,27 @@
 import './App.css'
 import Layout from './components/Layout'
 import Planet from './pages/Planet'
+import { useState } from 'react'
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
-const router = createBrowserRouter([
+ 
+
+
+function App() {
+ const [menu, setMenu] = useState<boolean>(false)
+ const router = createBrowserRouter([
   {
     path:'/',
-    element:<Layout />,
+    element:<Layout menu={menu} setMenu={setMenu} />,
     children:[
       {
         path:'/:planet',
-        element:<Planet />
+        element:<Planet menu={menu} />
       }
     ]
   }
 ])
-
-function App() {
-  console.log('string')
   return (
-      <RouterProvider router={router} />
+      <RouterProvider router={router}  />
 );
 }
 
