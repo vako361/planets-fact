@@ -151,8 +151,8 @@ export default function Planet({ menu }: { menu: boolean }) {
                md:gap-1 md:w-[164px] md:h-[88px] w-[327px]
                 h-[48px] border-[#fff]/20 border-[1px] lg:w-[255px] lg:h-[128px]"
             >
-              <span className="text-white opacity-50 text-[8px]">{item.name}</span>
-              <span className="text-white text-[15px] font-[Antonio]">{item.content}</span>
+              <span className="text-white opacity-50 text-[8px] lg:text-[12px]">{item.name}</span>
+              <span className="text-white text-[15px] font-[Antonio] lg:text-[17px]">{item.content}</span>
             </div>
           ))}
         </section>
